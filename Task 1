@@ -1,0 +1,45 @@
+Question 1. What keyword does a function need for it to give back the results to the place where it was called?
+A function needs a return statement. For example:
+
+def calculation (x, y):
+    result = x + y
+    return result
+
+sum = calculation(3, 4)
+print(sum)  
+
+Question 2. 
+There are 5 scrum ceremonies which include:
+Sprint planning - start of a sprint
+Daily scrum - each day
+Sprint review - end of sprint
+Sprint retro - end of sprint
+Backlog refinement - continously
+People who attend these meetings might be the product owner, developer, scrum master
+
+Question 3.The Python module for testing is unittest
+You would import this by
+importunittest
+
+Question 4.
+Data Definition Language (DDL) is a subset of SQL that is used to define and manage the 
+structure of a database and its objects. DDL statements can be used for creating, altering and dropping database
+objects such as tables, indexes and views.
+An example would be:
+CREATE TABLE
+ALTER TABLE
+DROP TABLE
+
+Question 5. 
+Considerations/Problems when designing a lottery app
+Security would be a consideration - handles sensitive user information and financial transactions
+
+Fairness - random number generation must be robust and verifable to ensure fairness
+
+Scabilitiy - There may be lots of users trying to use the app at the same time or when there is a large
+winning jackpot so the app must be able to handle high  levels of traffic. Measures such as load balancing or scaling 
+could be implimented to reduce chance of crashing.
+
+Regulatory compliance - lots of regulations in place so users must be able to confirm above 18, data protection also
+There must be verification steps in order to fulfil these laws.
+
