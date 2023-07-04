@@ -1,0 +1,62 @@
+# Collections module is used to count the occurrences of elements
+from collections import Counter
+
+#  Custom exception which will be raised if there isn't enough  letters in the sentence provided
+class LettersException(Exception):
+    pass
+
+def find_most_common_letters(sentence):
+    sentence = sentence.replace(" ", "")
+
+    # Count the amount of times each letter appears
+    letter_count = Counter(sentence)
+
+    if len(letter_count) < 3:
+        raise LettersException("Not enough letters to determine the three most common.")
+
+    # Find the three most common letters in the sentence
+    most_common_letters = letter_count.most_common(3)
+    return [letter for letter, count in most_common_letters]
+
+
+try:
+    sentence = "Welcome to Jody's Homework"
+    most_common_letters = find_most_common_letters(sentence)
+    print("The 3 most common letters are:", most_common_letters)
+except LettersException:
+    print("There aren't enough letters to give a response.")
+
+import unittest
+
+class TestFindMostCommonLetters(unittest.TestCase):
+    def test_valid_sentence(self):
+        sentence = "Welcome to Jody's Homework"
+        result = find_most_common_letters(sentence)
+        self.assertEqual(result, ['o', 'e', 'm'])
+
+    def test_sentence_with_spaces(self):
+        sentence = "This is a test sentence"
+        result = find_most_common_letters(sentence)
+        self.assertEqual(result, ['s', 'e', 't'])
+
+    def test_empty_sentence(self):
+        sentence = ""
+        with self.assertRaises(LettersException):
+            find_most_common_letters(sentence)
+
+    # Invalid input
+
+    def test_sentence_with_insufficient_letters(self):
+        sentence = "ABC"
+        with self.assertRaises(LettersException):
+            find_most_common_letters(sentence)
+
+
+    # Edge case test
+    def test_sentence_with_exact_three_letters(self):
+        sentence = "aabbcc"
+        result = find_most_common_letters(sentence)
+        self.assertEqual(result, ['a', 'b', 'c'])
+
+if __name__ == '__main__':
+    unittest.main()
